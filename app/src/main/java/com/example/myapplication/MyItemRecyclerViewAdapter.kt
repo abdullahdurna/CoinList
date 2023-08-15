@@ -17,7 +17,9 @@ class MyItemRecyclerViewAdapter(
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.content)
+        val priceView: TextView = view.findViewById(R.id.price)  // Yeni eklediğimiz kısım
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -29,6 +31,7 @@ class MyItemRecyclerViewAdapter(
         val item = values[position]
         Log.d("ADAPTER_BIND", "Binding data at position: $position, name: ${item.name}")
         holder.textView.text = item.name
+        holder.priceView.text = item.price  // Fiyat bilgisini set ediyoruz
     }
 
 

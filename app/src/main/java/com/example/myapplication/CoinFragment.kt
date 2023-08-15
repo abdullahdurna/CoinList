@@ -37,18 +37,17 @@ class CoinFragment : Fragment() {
 
         // Set the adapter
         adapter = MyItemRecyclerViewAdapter(listOf())
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                this@CoinFragment.adapter = MyItemRecyclerViewAdapter(listOf())
-            }
+        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
+        adapter = MyItemRecyclerViewAdapter(listOf())
+        recyclerView.layoutManager = when {
+            columnCount <= 1 -> LinearLayoutManager(context)
+            else -> GridLayoutManager(context, columnCount)
         }
+        recyclerView.adapter = adapter
 
         return view
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
