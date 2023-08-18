@@ -22,7 +22,7 @@ class CoinListViewModel : ViewModel() {
 
     private fun getAllCoins() {
         viewModelScope.launch(Dispatchers.IO) {
-            val response = RetrofitInstance.apiService.getAllCoins()
+            val response = RetrofitInstance.apiServiceBinance.getAllCoins()
             if (response.isSuccessful) {
                 val allCoins = response.body() ?: listOf() // Eğer null ise boş liste atıyoruz
                 val filteredCoins = allCoins.filter { it.name.endsWith("USDT") }

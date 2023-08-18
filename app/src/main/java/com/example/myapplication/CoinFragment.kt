@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.myapplication.placeholder.PlaceholderContent
 
 /**
  * A fragment representing a list of Items.
@@ -37,7 +36,7 @@ class CoinFragment : Fragment() {
 
         // Set the adapter
         adapter = MyItemRecyclerViewAdapter(listOf())
-        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.liste)
         adapter = MyItemRecyclerViewAdapter(listOf())
         recyclerView.layoutManager = when {
             columnCount <= 1 -> LinearLayoutManager(context)
