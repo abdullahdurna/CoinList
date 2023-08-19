@@ -36,7 +36,7 @@ class CoinFragment : Fragment() {
 
         // Set the adapter
         adapter = MyItemRecyclerViewAdapter(listOf())
-        val recyclerView = view.findViewById<RecyclerView>(R.id.liste)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
         adapter = MyItemRecyclerViewAdapter(listOf())
         recyclerView.layoutManager = when {
             columnCount <= 1 -> LinearLayoutManager(context)

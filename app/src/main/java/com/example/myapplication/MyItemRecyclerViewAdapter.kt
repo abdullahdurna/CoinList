@@ -7,9 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-import com.example.myapplication.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.myapplication.databinding.FragmentCoinBinding
-
 
 class MyItemRecyclerViewAdapter(
     private var values: List<Coin>

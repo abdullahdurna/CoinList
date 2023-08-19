@@ -1,6 +1,7 @@
 package api
 
 import com.example.myapplication.Coin
+import com.example.myapplication.FlaskCoin
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -9,9 +10,6 @@ interface ApiService {
     suspend fun getAllCoins(): Response<List<Coin>>
 
     @GET("getOversoldCoins/1d")
-    suspend fun getFlaskCoins(): Response<List<Coin>>
-
-
-
+    suspend fun getFlaskCoins(): Response<List<FlaskCoin>>
 }
 

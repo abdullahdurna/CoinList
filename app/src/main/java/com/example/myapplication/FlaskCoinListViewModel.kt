@@ -10,25 +10,29 @@ import java.util.Timer
 
 class FlaskCoinListViewModel : ViewModel() {
 
-    private val _coins = MutableLiveData<List<Coin>>()
-    val coins: LiveData<List<Coin>> get() = _coins
-
+    private val _coins = MutableLiveData<List<FlaskCoin>>()
+    val coins: LiveData<List<FlaskCoin>> get() = _coins
     private val timer = Timer()
+    val dataLoaded: MutableLiveData<Boolean> = MutableLiveData()
+
 
     init {
-        timer.scheduleAtFixedRate(timerTask { getAllCoins() },0,5000)
+        getAllCoins()
     }
 
     private fun getAllCoins() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val response = RetrofitInstance.apiServiceFlask.getFlaskCoins()
-            if (response.isSuccessful) {
-                _coins.postValue(response.body() ?: listOf())
-            } else {
-                Log.d("FLASK_API_ERROR", "Response Code: ${response.code()} - Message: ${response.message()}")
+        if (_coins.value == null || _coins.value!!.isEmpty()) {
+            viewModelScope.launch(Dispatchers.IO) {
+                val response = RetrofitInstance.apiServiceFlask.getFlaskCoins()
+                if (response.isSuccessful) {
+                    _coins.postValue(response.body() ?: listOf())
+                } else {
+                    Log.d("FLASK_API_ERROR", "Response Code: ${response.code()} - Message: ${response.message()}")
+                }
             }
         }
     }
+
 
     override fun onCleared() {
         super.onCleared()

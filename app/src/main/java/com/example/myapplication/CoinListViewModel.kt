@@ -13,13 +13,10 @@ class CoinListViewModel : ViewModel() {
 
     private val _coins = MutableLiveData<List<Coin>>()
     val coins: LiveData<List<Coin>> get() = _coins
-
     private val timer = Timer()
-
     init {
         timer.scheduleAtFixedRate(timerTask { getAllCoins() }, 0, 1000)
     }
-
     private fun getAllCoins() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = RetrofitInstance.apiServiceBinance.getAllCoins()

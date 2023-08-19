@@ -16,7 +16,7 @@ import com.example.myapplication.R
 class FlaskCoinFragment : Fragment() {
 
     private var columnCount = 1
-    private lateinit var adapter: MyItemRecyclerViewAdapter
+    private lateinit var adapter: FlaskCoinRecyclerViewAdapter
     private val viewModel: FlaskCoinListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +33,9 @@ class FlaskCoinFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_coin_list, container, false)
 
         // Set the adapter
-        adapter = MyItemRecyclerViewAdapter(listOf())
-        val recyclerView = view.findViewById<RecyclerView>(R.id.liste)
-        adapter = MyItemRecyclerViewAdapter(listOf())
+        adapter = FlaskCoinRecyclerViewAdapter(listOf())
+        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
+        adapter = FlaskCoinRecyclerViewAdapter(listOf())
         recyclerView.layoutManager = when {
             columnCount <= 1 -> LinearLayoutManager(context)
             else -> GridLayoutManager(context, columnCount)
